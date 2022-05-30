@@ -72,8 +72,6 @@ public class MouseLook : MonoBehaviour
 	{
 		Vector2 mouseInput = m_inputMouseAxis * m_sensitivity;
 
-		Debug.Log(mouseInput.y);
-
 		Quaternion rotationYAW = m_invertYAW ? Quaternion.Euler(0.0f, -mouseInput.x, 0.0f) : Quaternion.Euler(0.0f, mouseInput.x, 0.0f);
 		Quaternion rotationPitch = m_invertPitch ? Quaternion.Euler(mouseInput.y, 0.0f, 0.0f) : Quaternion.Euler(-mouseInput.y, 0.0f, 0.0f);
 		

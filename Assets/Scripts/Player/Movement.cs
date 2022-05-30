@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 using System.Linq;
 using UnityEngine.InputSystem;
@@ -23,6 +22,13 @@ public class Movement : MovementBehavior
 	[SerializeField] private float m_backwardsMultiplier = 0.8f;
 	[SerializeField] private float m_sidewaysMultiplier = 0.8f;
 
+	[Header("Jetpack Properties")]
+	[SerializeField] private float m_maxFuel = 100.0f;
+	[SerializeField] private float m_fuelConsumptionSpeed = 5.0f;
+	[SerializeField] private float m_fuelRegenerationSpeed = 5.0f;
+	[Space]
+	[SerializeField] private float m_thrustPower = 5.0f;
+
 	private readonly RaycastHit[] m_groundHits = new RaycastHit[8];
 
 	private CharacterBehavior m_characterBehavior;
@@ -30,16 +36,21 @@ public class Movement : MovementBehavior
 	private Rigidbody m_rigidBody;
 	private Vector2 m_inputMovementAxis;
 	private Vector3 m_moveDirection;
-	private Vector3 m_velocity;
 	private Vector3 m_smoothValue;
 	private Vector3 m_currentVelocity;
-	private float lastJumpTime;
+	private float m_currentFuelAmount;
+
 	private bool m_isSprinting = false;
 	private bool m_isGrounded;
+	private bool m_isHoldingButton;
+
+	public event Action OnFlyEvent;
+
+	public override float GetCurrentFuel() => m_currentFuelAmount;
+	public override float GetMaxFuel() => m_maxFuel;
 
 	public override bool IsSprinting() => m_isSprinting;
 	public override bool IsGrounded() => m_isGrounded;
-
 
 	protected override void Awake()
 	{
@@ -55,6 +66,7 @@ public class Movement : MovementBehavior
 		if (m_capsuleCollider == null) Debug.LogError("Capsule Collider is returning Null!!");
 
 		m_rigidBody.constraints = RigidbodyConstraints.FreezeRotation;
+		m_currentFuelAmount = m_maxFuel;
 	}
 
 	protected override void Update()
@@ -62,8 +74,8 @@ public class Movement : MovementBehavior
 		if (m_rigidBody == null) return;
 		if (m_capsuleCollider == null) return;
 
+		Fly();
 		Move();
-		m_isGrounded = false;
 	}
 
 	// Ground Check
@@ -87,20 +99,43 @@ public class Movement : MovementBehavior
 
 	protected override void Move()
 	{
-		if (m_isGrounded || m_midAirControl)
+		m_moveDirection = new Vector3(m_inputMovementAxis.x, 0.0f, m_inputMovementAxis.y);
+
+		// Speed Multipliers
+		m_moveDirection *= m_isSprinting ? m_sprintSpeed : m_walkSpeed;
+		m_moveDirection.z *= (m_inputMovementAxis.y > 0) ? m_forwardMultiplier : m_backwardsMultiplier;
+		m_moveDirection.x *= m_sidewaysMultiplier;
+
+		m_moveDirection = transform.right * m_moveDirection.x + transform.forward * m_moveDirection.z;
+
+
+		if (m_isGrounded)
 		{
-			m_moveDirection = new Vector3(m_inputMovementAxis.x, 0.0f, m_inputMovementAxis.y);
-
-			// Speed Multipliers
-			m_moveDirection *= m_isSprinting ? m_sprintSpeed : m_walkSpeed;
-			m_moveDirection.z *= (m_inputMovementAxis.y > 0) ? m_forwardMultiplier : m_backwardsMultiplier;
-			m_moveDirection.x *= m_sidewaysMultiplier;
-
-			m_moveDirection = transform.right * m_moveDirection.x + transform.forward * m_moveDirection.z;
+			Debug.Log("Is Grounded");
+			m_moveDirection = new Vector3(m_moveDirection.x, m_rigidBody.velocity.y, m_moveDirection.z);
+			m_rigidBody.velocity = m_smoothMovement ? SmoothMovement(m_moveDirection, m_smoothAmount) : m_moveDirection;
+		}
+		else
+		{
+			Debug.Log("Is Flying");
+			m_rigidBody.AddForce((m_moveDirection), ForceMode.Impulse);
 		}
 
-		m_moveDirection = new Vector3(m_moveDirection.x, m_rigidBody.velocity.y, m_moveDirection.z);
-		m_rigidBody.velocity = m_smoothMovement ? SmoothMovement(m_moveDirection, m_smoothAmount) : m_moveDirection;
+	}
+
+	protected override void Fly()
+	{
+		if (m_isHoldingButton && m_currentFuelAmount > 0)
+		{
+			m_currentFuelAmount -= m_fuelConsumptionSpeed * Time.deltaTime;
+			m_isGrounded = false;
+			m_rigidBody.AddForce(transform.up * m_thrustPower, ForceMode.Force);
+		}
+
+		if(!m_isHoldingButton && m_currentFuelAmount <= m_maxFuel)
+		{
+			m_currentFuelAmount += m_fuelRegenerationSpeed * Time.deltaTime;
+		}
 	}
 
 	private Vector3 SmoothMovement(Vector3 target, float amount)
@@ -147,6 +182,22 @@ public class Movement : MovementBehavior
 		{
 			case InputActionPhase.Performed:
 				if (m_isGrounded) m_rigidBody.velocity += transform.up * m_jumpForce;
+				m_isGrounded = false;
+				break;
+		}
+	}
+
+	public void OnFly(InputAction.CallbackContext context)
+	{
+		switch (context.phase)
+		{
+			case InputActionPhase.Started:
+				m_isHoldingButton = true;
+				break;
+			case InputActionPhase.Canceled:
+				m_isHoldingButton = false;
+				break;
+			default:
 				break;
 		}
 	}

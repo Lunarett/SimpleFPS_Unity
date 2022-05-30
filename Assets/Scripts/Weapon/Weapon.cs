@@ -86,15 +86,15 @@ public class Weapon : WeaponBehavior
 				{
 					PlayImpactParticles(fireHit.collider.gameObject.layer, fireHit.point, Quaternion.LookRotation(fireHit.normal));
 
-					// Deal Damage
-					HitBox hb = fireHit.collider.gameObject.GetComponent<HitBox>();
-					if (hb != null)
-					{
-						if (fireHit.collider.CompareTag("Head"))
-							hb.OnBulletHit(100);
-						else
-							hb.OnBulletHit(m_damage);
-					}
+// 					// Deal Damage
+// 					HitBox hb = fireHit.collider.gameObject.GetComponent<HitBox>();
+// 					if (hb != null)
+// 					{
+// 						if (fireHit.collider.CompareTag("Head"))
+// 							hb.OnBulletHit(100);
+// 						else
+// 							hb.OnBulletHit(m_damage);
+// 					}
 				}
 			}
 			else

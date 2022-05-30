@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public abstract class MovementBehavior : MonoBehaviour
@@ -13,8 +12,12 @@ public abstract class MovementBehavior : MonoBehaviour
 
 	// Methods
 	protected abstract void Move();
+	protected abstract void Fly();
 
 	// Getters
+	public abstract float GetCurrentFuel();
+	public abstract float GetMaxFuel();
+
 	public abstract bool IsSprinting();
 	public abstract bool IsGrounded();
 }

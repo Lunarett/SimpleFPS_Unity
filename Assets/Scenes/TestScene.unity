@@ -1499,9 +1499,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1900900719, guid: 7dd39e5b3ab05b0428b57f85e28b8090, type: 3}
+      propertyPath: m_shotImpulse
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 47716270809907476, guid: 7dd39e5b3ab05b0428b57f85e28b8090, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 47716270809907478, guid: 7dd39e5b3ab05b0428b57f85e28b8090, type: 3}
+      propertyPath: m_thrustPower
+      value: 800
       objectReference: {fileID: 0}
     - target: {fileID: 47716270809907479, guid: 7dd39e5b3ab05b0428b57f85e28b8090, type: 3}
       propertyPath: m_RootOrder
@@ -1566,6 +1574,14 @@ PrefabInstance:
     - target: {fileID: 47716270809907498, guid: 7dd39e5b3ab05b0428b57f85e28b8090, type: 3}
       propertyPath: m_sensitivityY
       value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 5753983704373267748, guid: 7dd39e5b3ab05b0428b57f85e28b8090, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5753983704373267748, guid: 7dd39e5b3ab05b0428b57f85e28b8090, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7dd39e5b3ab05b0428b57f85e28b8090, type: 3}
