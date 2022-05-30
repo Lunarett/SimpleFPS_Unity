@@ -23,6 +23,7 @@ public class Movement : MovementBehavior
 	[SerializeField] private float m_sidewaysMultiplier = 0.8f;
 
 	[Header("Jetpack Properties")]
+	[SerializeField] private HUD m_HUD;
 	[SerializeField] private float m_maxFuel = 100.0f;
 	[SerializeField] private float m_fuelConsumptionSpeed = 5.0f;
 	[SerializeField] private float m_fuelRegenerationSpeed = 5.0f;
@@ -128,6 +129,7 @@ public class Movement : MovementBehavior
 		if (m_isHoldingButton && m_currentFuelAmount > 0)
 		{
 			m_currentFuelAmount -= m_fuelConsumptionSpeed * Time.deltaTime;
+			m_HUD.UpdateFuelBar(m_currentFuelAmount, m_maxFuel);
 			m_isGrounded = false;
 			m_rigidBody.AddForce(transform.up * m_thrustPower, ForceMode.Force);
 		}
@@ -135,6 +137,7 @@ public class Movement : MovementBehavior
 		if(!m_isHoldingButton && m_currentFuelAmount <= m_maxFuel)
 		{
 			m_currentFuelAmount += m_fuelRegenerationSpeed * Time.deltaTime;
+			m_HUD.UpdateFuelBar(m_currentFuelAmount, m_maxFuel);
 		}
 	}
 

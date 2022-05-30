@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: EnemyConfig
   m_EditorClassIdentifier: 
   MaxSightDistance: 5
-  MinShootingRange: 5
+  MinShootingRange: 40
   UpdateTimer: 1
   MinDistance: 1
   TargetTag: Player

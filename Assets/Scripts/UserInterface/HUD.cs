@@ -9,13 +9,13 @@ public class HUD : MonoBehaviour
 	[SerializeField] private Slider m_fuelBar;
 	[SerializeField] private Slider m_healthBar;
 
-	public void UpdateFuelBar(float fuel)
+	public void UpdateFuelBar(float fuel, float max)
 	{
-		m_fuelBar.value = fuel;
+		m_fuelBar.value = fuel / max;
 	}
 
-	public void UpdateHealthBar(float health)
+	public void UpdateHealthBar(float health, float max)
 	{
-		m_healthBar.value = health;
+		m_healthBar.value = health / max;
 	}
 }

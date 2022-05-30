@@ -23,6 +23,8 @@ public class ChaseTargetState : IEnemyState
 
 	public void Update(EnemyAgent agent)
 	{
+		if(agent.target == null) { agent.target = GameObject.FindGameObjectWithTag(agent.Config.TargetTag).transform; }
+
 		if (agent.health.CurrentHealth <= 0)
 		{
 			agent.weapon.StartFire = false;

@@ -3,20 +3,19 @@ using UnityEngine;
 
 public class Health : MonoBehaviour, IDamageable
 {
-	[SerializeField] private float health = 100;
+	[SerializeField] private float m_maxHealth = 100;
+	[SerializeField] private HUD m_HUD;
 
-	EnemyAgent enemyAgent;
-	float currentHealth;
+	float m_currentHealth;
 
 	public event Action OnDeath;
 	public event Action OnHealthChanged;
 
-	public float CurrentHealth { get => currentHealth; }
+	public float CurrentHealth { get => m_currentHealth; }
 
 	private void Awake()
 	{
 		var rigidBodies = GetComponentsInChildren<Rigidbody>();
-		enemyAgent = GetComponent<EnemyAgent>();
 
 		foreach (var rb in rigidBodies)
 		{
@@ -27,15 +26,25 @@ public class Health : MonoBehaviour, IDamageable
 
 	private void Start()
 	{
-		currentHealth = health;
+		m_currentHealth = m_maxHealth;
+
+		if(m_HUD != null)
+		{
+			m_HUD.UpdateHealthBar(m_currentHealth, m_maxHealth);
+		}
 	}
 
 	public void Damage(float damageAmount)
 	{
-		currentHealth = Mathf.Clamp(currentHealth -= damageAmount, 0, health);
+		m_currentHealth = Mathf.Clamp(m_currentHealth -= damageAmount, 0, m_maxHealth);
 		OnHealthChanged?.Invoke();
 
-		if (currentHealth <= 0) Death();
+		if (m_currentHealth <= 0) Death();
+
+		if(m_HUD != null)
+		{
+			m_HUD.UpdateHealthBar(m_currentHealth, m_maxHealth);
+		}
 	}
 
 	private void Death()
