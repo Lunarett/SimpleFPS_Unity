@@ -32,13 +32,15 @@ public class ChaseTargetState : IEnemyState
 		}
 
 		RaycastHit hit;
-		Vector3 dir = (agent.target.position - agent.transform.position);
+		Vector3 dir = (agent.target.position - agent.firelocation.position);
 		bool ray = Physics.Raycast(new Ray((agent.transform.position + Vector3.up * 1.5f), dir), out hit, 100);
 
 		if(ray && InRange(agent, agent.Config.MinShootingRange))
 		{
+
 			if (hit.collider.CompareTag("Player"))
 			{
+				Debug.Log(hit.collider.name);
 				agent.weapon.StartFire = true;
 			}
 			else

@@ -15,19 +15,9 @@ public class IdleState : IEnemyState
 	
 	public void Update(EnemyAgent agent)
 	{
-		//Vector3 targetDir = agent.target.position - agent.gameObject.transform.position;
-		//
-		//if (targetDir.magnitude > agent.Config.MaxSightDistance)
-		//	return;
-		//
-		//Vector3 agentDir = agent.gameObject.transform.forward;
-		//agentDir.Normalize();
-		//float dotProduct = Vector3.Dot(targetDir, agentDir);
-		//
-		//if(dotProduct > 0)
-		//{
-		//	agent.stateMachine.ChangeState(EnemyStateID.ChaseTarget);
-		//}
+		if (agent.PatrolPoints.Length <= 0) { return; }
+
+
 	}
 
 	public void Exit(EnemyAgent agent)

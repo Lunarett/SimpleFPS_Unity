@@ -9,6 +9,9 @@ public class EnemyAgent : MonoBehaviour
 	public EnemyStateID initialState;
 	public EnemyAgentConfig Config;
 	public EnemyWeapon weapon;
+	public Transform firelocation;
+
+	public Transform[] PatrolPoints;
 
 	[HideInInspector] public Transform target;
 	[HideInInspector] public NavMeshAgent navMeshAgent;

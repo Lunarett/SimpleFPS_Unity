@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Custom_Blockout_Shader_Base
+  m_Name: Custom_Blockout_Shader_Base 2
   m_Shader: {fileID: 4800000, guid: 1bfe0b648f9c4b04cb0ebbfaa5d15701, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -42,5 +42,5 @@ Material:
     - _Metallic: 0
     - __dirty: 0
     m_Colors:
-    - _Color: {r: 0.6792453, g: 0.6792453, b: 0.6792453, a: 1}
+    - _Color: {r: 1, g: 0.7286761, b: 0.3160377, a: 1}
   m_BuildTextureStacks: []
