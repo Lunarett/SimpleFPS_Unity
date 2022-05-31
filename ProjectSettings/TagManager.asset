@@ -5,8 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Head
-  - Enemy
   - PlayerHit
+  - Bot
+  - Enemy
   layers:
   - Default
   - TransparentFX

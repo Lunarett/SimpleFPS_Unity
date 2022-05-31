@@ -26,7 +26,7 @@ public class MouseLook : MonoBehaviour
 	[SerializeField] private float m_swayThreshold = -5.0f;
 	[SerializeField] private float m_swaySmooth = 5.0f;
 
-	private CharacterBehavior m_characterBehavior;
+	private PlayerCharacterBehavior m_characterBehavior;
 	private Rigidbody m_rigidbody;
 	private Vector2 m_inputMouseAxis;
 	private Vector2 m_sensitivity;
@@ -40,7 +40,7 @@ public class MouseLook : MonoBehaviour
 
 	private void Awake()
 	{
-		m_characterBehavior = GetComponent<CharacterBehavior>();
+		m_characterBehavior = GetComponent<PlayerCharacterBehavior>();
 		m_rigidbody = GetComponent<Rigidbody>();
 
 		m_sensitivity = new Vector2(m_sensitivityX, m_sensitivityY);
@@ -52,7 +52,7 @@ public class MouseLook : MonoBehaviour
 		//if (m_characterBehavior == null) Debug.LogError("Character Behavior is returning Null");
 		//if (m_Rigidbody == null) Debug.LogError("RigidBody is returning Null");
 
-		MyDebug<CharacterBehavior>.NullCheck(m_characterBehavior);
+		MyDebug<PlayerCharacterBehavior>.NullCheck(m_characterBehavior);
 		MyDebug<Rigidbody>.NullCheck(m_rigidbody);
 
 		m_cameraRotation = m_camera.rotation;

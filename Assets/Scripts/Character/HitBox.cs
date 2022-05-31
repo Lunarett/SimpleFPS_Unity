@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class HitBox : MonoBehaviour
 {
-	public Health health;
+	private Health m_health;
 
-	public void OnBulletHit(float damageAmount)
+	public Health Health { get => m_health; set { m_health = value; } }
+
+	public void OnBulletHit(float damageAmount, GameObject instigator)
 	{
-		health.Damage(damageAmount);
+		if(instigator == null) { return; }
+
+		m_health.Damage(damageAmount, instigator);
 	}
 }

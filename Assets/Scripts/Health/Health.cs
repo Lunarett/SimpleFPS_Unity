@@ -1,28 +1,29 @@
 using System;
 using UnityEngine;
 
+public enum ETeams
+{
+	RedTeam = 0,
+	BlueTeam = 1
+}
+
 public class Health : MonoBehaviour, IDamageable
 {
-	[SerializeField] private float m_maxHealth = 100;
+	[Header("References")]
 	[SerializeField] private HUD m_HUD;
+	
+	[Header("Health Properties")]
+	[SerializeField] private float m_maxHealth = 100;
+	[SerializeField] private ETeams m_team;
 
-	float m_currentHealth;
+	private float m_currentHealth;
 
 	public event Action OnDeath;
 	public event Action OnHealthChanged;
 
 	public float CurrentHealth { get => m_currentHealth; }
-
-	private void Awake()
-	{
-		var rigidBodies = GetComponentsInChildren<Rigidbody>();
-
-		foreach (var rb in rigidBodies)
-		{
-			HitBox hb = rb.gameObject.AddComponent<HitBox>();
-			hb.health = this;
-		}
-	}
+	public float MaxHealth { get => m_maxHealth; }
+	public ETeams Team { get => m_team; }
 
 	private void Start()
 	{
@@ -34,10 +35,13 @@ public class Health : MonoBehaviour, IDamageable
 		}
 	}
 
-	public void Damage(float damageAmount)
+	public void Damage(float damageAmount, GameObject instigator)
 	{
-		m_currentHealth = Mathf.Clamp(m_currentHealth -= damageAmount, 0, m_maxHealth);
+		if(IsFriendly(instigator)) { return; }
+
 		OnHealthChanged?.Invoke();
+		
+		m_currentHealth = Mathf.Clamp(m_currentHealth -= damageAmount, 0, m_maxHealth);
 
 		if (m_currentHealth <= 0) Death();
 
@@ -50,5 +54,28 @@ public class Health : MonoBehaviour, IDamageable
 	private void Death()
 	{
 		OnDeath?.Invoke();
+	}
+
+	private bool IsFriendly(GameObject instigator)
+	{
+		// If either are null assume they are friendly
+		if (instigator == null)
+		{
+			Debug.LogWarning("Instigators is Null");
+			return true;
+		}
+
+		Health instigatorHealth = instigator.GetComponent<Health>();
+
+		if(instigatorHealth != null)
+		{
+			Debug.Log(gameObject.name);
+			return (int)instigatorHealth.Team == (int)m_team ? true : false;
+		}
+		else
+		{
+			Debug.LogWarning("Instigators Health is returning null!");
+			return true;
+		}
 	}
 }

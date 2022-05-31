@@ -12,12 +12,19 @@ public abstract class WeaponBehavior : MonoBehaviour
 	protected virtual void LateUpdate() { }
 
 	//Methods
-	public abstract void Fire();
+	public abstract void SetOwnerObject(GameObject owner);
+	public abstract void StartFire();
+	public abstract void StopFire();
+	protected abstract void Fire();
 	public abstract void Reload();
 
 	//Getters
+	public abstract GameObject GetOwnerObject();
 	public abstract int GetCurrentAmmo();
 	public abstract int GetMagazineSize();
 	public abstract string GetWeaponName();
+	public abstract bool GetIsFiring();
+	public abstract bool GetIsReloading();
+	public abstract Transform GetFireTransform();
 
 }

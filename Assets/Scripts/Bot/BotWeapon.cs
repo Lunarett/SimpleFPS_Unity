@@ -2,19 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-public class ImpactEffects
-{
-	[SerializeField] private string m_name;
-	[SerializeField] private GameObject m_impactParticlePrefab;
-	[SerializeField] private LayerMask m_impactLayerMask;
-
-	public GameObject Prefab { get => m_impactParticlePrefab; }
-	public LayerMask Layer { get => m_impactLayerMask; }
-	public string Name { get => m_name; }
-}
-
-public class Weapon : WeaponBehavior
+public class BotWeapon : WeaponBehavior
 {
 	[Header("Weapon Properties")]
 	[SerializeField] private string m_weaponName;
@@ -86,42 +74,17 @@ public class Weapon : WeaponBehavior
 
 			if (m_currentAmmo > 0)
 			{
-				m_currentAmmo = m_infiniteAmmo ? m_magazineSize : m_currentAmmo - 1;
-
-				PlayMuzzleParticles();
-
 				Vector3 spreadValue = Random.insideUnitSphere * (m_spread);
 				spreadValue.z = 0;
 				spreadValue = m_fireTransform.TransformDirection(spreadValue);
 
-				Quaternion rotation = Quaternion.LookRotation(Camera.main.transform.forward * 1000.0f + spreadValue - m_fireTransform.position);
-
-				if (Physics.Raycast(new Ray(Camera.main.transform.position, Camera.main.transform.forward),
-					out RaycastHit hit, m_fireDistance, m_rayLayerMask))
-					rotation = Quaternion.LookRotation(hit.point + spreadValue - m_fireTransform.position);
-
-				SpawnProjectile(rotation, spreadValue);
+				PlayMuzzleParticles();
+				SpawnProjectile(m_fireTransform.rotation, spreadValue);
 			}
 			else
 			{
 				Reload();
 			}
-		}
-	}
-
-	private void SpawnProjectile(Quaternion rotation, Vector3 spread)
-	{
-		GameObject projectile = Instantiate(m_bulletPrefab, m_fireTransform.position, rotation);
-		projectile.GetComponent<Projectile>().OwnerObject = m_ownerObject;
-		projectile.transform.SetParent(null);
-		projectile.GetComponent<Rigidbody>().velocity = (m_fireTransform.forward + spread) * m_shotImpulse;
-	}
-
-	private void PlayMuzzleParticles()
-	{
-		foreach (ParticleSystem p in m_muzzleEffects)
-		{
-			p.Play();
 		}
 	}
 
@@ -140,5 +103,21 @@ public class Weapon : WeaponBehavior
 
 		m_isReloading = false;
 		m_canFire = true;
+	}
+
+	private void SpawnProjectile(Quaternion rotation, Vector3 spread)
+	{
+		GameObject projectile = Instantiate(m_bulletPrefab, m_fireTransform.position, rotation);
+		projectile.GetComponent<Projectile>().OwnerObject = m_ownerObject;
+		projectile.transform.SetParent(null);
+		projectile.GetComponent<Rigidbody>().velocity = (m_fireTransform.forward + spread) * m_shotImpulse;
+	}
+
+	private void PlayMuzzleParticles()
+	{
+		foreach (ParticleSystem p in m_muzzleEffects)
+		{
+			p.Play();
+		}
 	}
 }

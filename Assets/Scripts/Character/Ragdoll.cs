@@ -4,17 +4,28 @@ using UnityEngine;
 
 public class Ragdoll : MonoBehaviour
 {
-	[SerializeField] Rigidbody weapon;
+	[SerializeField] private Rigidbody m_weapon;
 
-	Rigidbody[] rigidBodies;
-	Animator anim;
+	private Rigidbody[] m_rigidBodies;
+	private Animator m_anim;
+	private Health m_health;
 
-	public Rigidbody[] Rigidbodies { get => rigidBodies; }
+	public Rigidbody[] Rigidbodies { get => m_rigidBodies; }
 
 	private void Awake()
 	{
-		rigidBodies = GetComponentsInChildren<Rigidbody>();
-		anim = GetComponent<Animator>();
+		m_rigidBodies = GetComponentsInChildren<Rigidbody>();
+		m_anim = GetComponent<Animator>();
+		m_health = GetComponent<Health>();
+
+		if(m_health != null && m_rigidBodies != null)
+		{
+			foreach (var rb in m_rigidBodies)
+			{
+				HitBox hb = rb.gameObject.AddComponent<HitBox>();
+				hb.Health = m_health;
+			}
+		}
 	}
 
 	private void Start()
@@ -24,25 +35,25 @@ public class Ragdoll : MonoBehaviour
 
 	public void DeactivateRagdoll()
 	{
-		foreach (Rigidbody rb in rigidBodies)
+		foreach (Rigidbody rb in m_rigidBodies)
 		{
 			rb.isKinematic = true;
 			rb.gameObject.layer = 0;
 		}
 		
-		anim.enabled = true;
-		weapon.isKinematic = true;
+		m_anim.enabled = true;
+		m_weapon.isKinematic = true;
 	}
 
 	public void ActivateRagdoll()
 	{
-		foreach (Rigidbody rb in rigidBodies)
+		foreach (Rigidbody rb in m_rigidBodies)
 		{
 			rb.isKinematic = false;
 			rb.gameObject.layer = 10;
 		}
 
-		anim.enabled = false;
-		weapon.gameObject.SetActive(false);
+		m_anim.enabled = false;
+		m_weapon.gameObject.SetActive(false);
 	}
 }
