@@ -16,6 +16,10 @@ public class Health : MonoBehaviour, IDamageable
 	[SerializeField] private float m_maxHealth = 100;
 	[SerializeField] private ETeams m_team;
 
+	[Header("Regeneration Properties")]
+	[SerializeField] private bool m_regenerate;
+	[SerializeField] private float m_regenerateAmount = 5.0f;
+
 	private float m_currentHealth;
 
 	public event Action OnDeath;
@@ -35,6 +39,11 @@ public class Health : MonoBehaviour, IDamageable
 		}
 	}
 
+	private void Update()
+	{
+		
+	}
+
 	public void Damage(float damageAmount, GameObject instigator)
 	{
 		if(IsFriendly(instigator)) { return; }
@@ -49,6 +58,13 @@ public class Health : MonoBehaviour, IDamageable
 		{
 			m_HUD.UpdateHealthBar(m_currentHealth, m_maxHealth);
 		}
+	}
+
+	public void Heal(float healAmount)
+	{
+		OnHealthChanged?.Invoke();
+
+		m_currentHealth = Mathf.Clamp(m_currentHealth += healAmount, 0, m_maxHealth);
 	}
 
 	private void Death()
@@ -69,7 +85,6 @@ public class Health : MonoBehaviour, IDamageable
 
 		if(instigatorHealth != null)
 		{
-			Debug.Log(gameObject.name);
 			return (int)instigatorHealth.Team == (int)m_team ? true : false;
 		}
 		else

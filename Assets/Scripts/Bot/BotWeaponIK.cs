@@ -36,11 +36,11 @@ public class BotWeaponIK : MonoBehaviour
 		m_agent = GetComponent<BotAgent>();
 		m_anim = GetComponent<Animator>();
 
-		m_targetTransform = GameObject.FindGameObjectWithTag("Player").transform;
 	}
 
 	private void Start()
 	{
+		m_targetTransform = GameObject.FindGameObjectWithTag("RedTeam").transform;
 		m_boneTransforms = new Transform[m_humanBones.Length];
 		for (int i = 0; i < m_boneTransforms.Length; i++)
 		{

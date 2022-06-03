@@ -22,7 +22,7 @@ public class Projectile : ProjectileBehavior
 
 	private void OnCollisionEnter(Collision other)
 	{
-		if (other.gameObject.CompareTag("Bot"))
+		if (other.gameObject.CompareTag("BlueTeam"))
 		{
 			HitBox hb = other.gameObject.GetComponent<HitBox>();
 			if (hb != null)
@@ -35,7 +35,7 @@ public class Projectile : ProjectileBehavior
 				Instantiate(m_impactEffects[1].Prefab, transform.position, transform.rotation);
 			}
 		}
-		else if (other.collider.CompareTag("Player"))
+		else if (other.collider.CompareTag("RedTeam"))
 		{
 			Health health = other.gameObject.GetComponent<Health>();
 

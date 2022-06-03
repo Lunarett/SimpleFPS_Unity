@@ -18,6 +18,7 @@ public class BotAgent : BotAgentBehavior
 	private Ragdoll m_ragdoll;
 	private SkinnedMeshRenderer m_skinnedMesh;
 	private BotWeaponIK m_weaponIK;
+	private AISightSensor m_sightSensor;
 
 	public override BotStateMachine GetStateMachine() => m_stateMachine;
 	public override EnemyAgentConfig GetConfig() => m_config;
@@ -28,21 +29,25 @@ public class BotAgent : BotAgentBehavior
 	public override Ragdoll GetRagdoll() => m_ragdoll;
 	public override SkinnedMeshRenderer GetSkinnedMeshRenderer() => m_skinnedMesh;
 	public override BotWeaponIK GetWeaponIK() => m_weaponIK;
+	public override AISightSensor GetAISightSensor() => m_sightSensor;
 
 	protected override void Awake()
 	{
 		m_weapon.SetOwnerObject(gameObject);
+
+		m_navMeshAgent = GetComponent<NavMeshAgent>();
+		m_ragdoll = GetComponent<Ragdoll>();
+		m_skinnedMesh = GetComponentInChildren<SkinnedMeshRenderer>();
+		m_sightSensor = GetComponent<AISightSensor>();
+		m_health = GetComponent<Health>();
+
+		m_health.OnDeath += DestroyEnemy;
+
 	}
 
 	protected override void Start()
 	{
-		Time.timeScale = 1;
-		m_navMeshAgent = GetComponent<NavMeshAgent>();
-		m_ragdoll = GetComponent<Ragdoll>();
-		m_skinnedMesh = GetComponentInChildren<SkinnedMeshRenderer>();
-		m_health = GetComponent<Health>();
-		m_health.OnDeath += DestroyEnemy;
-
+		m_target = GameObject.FindGameObjectWithTag("RedTeam").transform;
 		m_stateMachine = new BotStateMachine(this);
 		m_stateMachine.RegisterState(new ChaseTargetState());
 		m_stateMachine.RegisterState(new DeathState());
@@ -50,7 +55,6 @@ public class BotAgent : BotAgentBehavior
 		m_stateMachine.ChangeState(m_initialState);
 
 		StartCoroutine(LateStart());
-		m_target = GameObject.FindGameObjectWithTag("Player").transform;
 	}
 
 	IEnumerator LateStart()

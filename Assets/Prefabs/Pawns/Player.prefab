@@ -358,7 +358,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1980, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -5336,11 +5336,11 @@ GameObject:
   - component: {fileID: 47716270720814648}
   m_Layer: 7
   m_Name: Eyes
-  m_TagString: Player
+  m_TagString: RedTeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &47716270720814649
 Transform:
   m_ObjectHideFlags: 0
@@ -5349,8 +5349,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 47716270720814630}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.006000014, y: 0.612, z: 0.308}
-  m_LocalScale: {x: 0.7529137, y: 0.51422703, z: 0.59777933}
+  m_LocalPosition: {x: 0.006000014, y: 0.62, z: 0.168}
+  m_LocalScale: {x: 0.6000421, y: 0.2999428, z: 0.69054693}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 47716271363485192}
@@ -5437,7 +5437,7 @@ GameObject:
   - component: {fileID: 47716270809907496}
   m_Layer: 7
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: RedTeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5450,7 +5450,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 47716270809907476}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.297, y: 5.26, z: -3.94}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5485,10 +5485,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.37
-  m_Height: 2
+  m_Radius: 0.27966267
+  m_Height: 1.9664586
   m_Direction: 1
-  m_Center: {x: 0, y: -0.24, z: 0}
+  m_Center: {x: 0, y: -0.47139347, z: -0.090337336}
 --- !u!114 &47716270809907498
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5570,6 +5570,8 @@ MonoBehaviour:
   m_HUD: {fileID: 1973449467}
   m_maxHealth: 100
   m_team: 0
+  m_regenerate: 0
+  m_regenerateAmount: 5
 --- !u!114 &47716270809907496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5736,7 +5738,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 47716271044309372}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.236, z: 0}
+  m_LocalPosition: {x: 0, y: -1.468, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5800,7 +5802,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &47716271700633206
 Transform:
   m_ObjectHideFlags: 0
@@ -6011,7 +6013,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &47716272620029416
 Transform:
   m_ObjectHideFlags: 0
@@ -6492,7 +6494,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7244628329154404671}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.391, z: 0.584}
+  m_LocalPosition: {x: 0, y: 0.391, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6526,7 +6528,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8664379378124657338}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.206, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6662,15 +6664,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 74dac818608b1d042a847ca6da9bf239, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.381
+      value: 0.361
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 74dac818608b1d042a847ca6da9bf239, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.087
+      value: -0.298
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 74dac818608b1d042a847ca6da9bf239, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.786
+      value: -0.044
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 74dac818608b1d042a847ca6da9bf239, type: 3}
       propertyPath: m_LocalRotation.w

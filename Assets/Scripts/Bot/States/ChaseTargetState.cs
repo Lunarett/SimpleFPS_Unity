@@ -36,7 +36,7 @@ public class ChaseTargetState : IBotState
 		if(ray && InRange(agent, agent.GetConfig().MinShootingRange))
 		{
 
-			if (hit.collider.CompareTag("Player"))
+			if (hit.collider.CompareTag("RedTeam"))
 			{
 				agent.GetWeapon().StartFire();
 			}

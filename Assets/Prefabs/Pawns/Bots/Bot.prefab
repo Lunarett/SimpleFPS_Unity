@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4269697553618555064}
   m_Layer: 9
   m_Name: mixamorig:LeftHandIndex4
-  m_TagString: Bot
+  m_TagString: BlueTeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 7887059989698848820}
   m_Layer: 9
   m_Name: mixamorig:Neck
-  m_TagString: Bot
+  m_TagString: BlueTeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -77,7 +77,7 @@ GameObject:
   - component: {fileID: 132134015274361198}
   m_Layer: 9
   m_Name: mixamorig:LeftForeArm
-  m_TagString: Bot
+  m_TagString: BlueTeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -185,7 +185,7 @@ GameObject:
   - component: {fileID: 4049019067832532851}
   m_Layer: 9
   m_Name: mixamorig:RightHandRing3
-  m_TagString: Bot
+  m_TagString: BlueTeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -217,7 +217,7 @@ GameObject:
   - component: {fileID: 6419260007334712827}
   m_Layer: 9
   m_Name: mixamorig:RightHandIndex4
-  m_TagString: Bot
+  m_TagString: BlueTeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -248,7 +248,7 @@ GameObject:
   - component: {fileID: 2261298827317863054}
   m_Layer: 9
   m_Name: mixamorig:RightToeBase
-  m_TagString: Bot
+  m_TagString: BlueTeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -280,7 +280,7 @@ GameObject:
   - component: {fileID: 1516142994861578830}
   m_Layer: 9
   m_Name: mixamorig:RightHandPinky3
-  m_TagString: Bot
+  m_TagString: BlueTeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -312,7 +312,7 @@ GameObject:
   - component: {fileID: 2697596567189635018}
   m_Layer: 9
   m_Name: mixamorig:LeftHandIndex1
-  m_TagString: Bot
+  m_TagString: BlueTeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -344,7 +344,7 @@ GameObject:
   - component: {fileID: 7864523161106670053}
   m_Layer: 9
   m_Name: mixamorig:LeftHand
-  m_TagString: Bot
+  m_TagString: BlueTeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -394,7 +394,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 695840611492903796}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalPosition: {x: -0, y: -0.255, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -517,7 +517,7 @@ GameObject:
   - component: {fileID: 8189089883429601124}
   m_Layer: 9
   m_Name: mixamorig:RightHandIndex3
-  m_TagString: Bot
+  m_TagString: BlueTeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -549,7 +549,7 @@ GameObject:
   - component: {fileID: 5015399468186593828}
   m_Layer: 9
   m_Name: mixamorig:LeftHandRing4
-  m_TagString: Bot
+  m_TagString: BlueTeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -580,7 +580,7 @@ GameObject:
   - component: {fileID: 3230828789075756348}
   m_Layer: 9
   m_Name: mixamorig:RightHandThumb3
-  m_TagString: Bot
+  m_TagString: BlueTeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -612,7 +612,7 @@ GameObject:
   - component: {fileID: 4127853814737824144}
   m_Layer: 9
   m_Name: mixamorig:LeftHandThumb3
-  m_TagString: Bot
+  m_TagString: BlueTeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -644,7 +644,7 @@ GameObject:
   - component: {fileID: 1625319691591578834}
   m_Layer: 9
   m_Name: mixamorig:LeftShoulder
-  m_TagString: Bot
+  m_TagString: BlueTeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -676,7 +676,7 @@ GameObject:
   - component: {fileID: 3363536053814234094}
   m_Layer: 9
   m_Name: mixamorig:RightHand
-  m_TagString: Bot
+  m_TagString: BlueTeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -713,7 +713,7 @@ GameObject:
   - component: {fileID: 6979222587785958562}
   m_Layer: 9
   m_Name: mixamorig:RightHandRing2
-  m_TagString: Bot
+  m_TagString: BlueTeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -745,7 +745,7 @@ GameObject:
   - component: {fileID: 7847337185094771833}
   m_Layer: 9
   m_Name: mixamorig:LeftHandRing1
-  m_TagString: Bot
+  m_TagString: BlueTeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -777,7 +777,7 @@ GameObject:
   - component: {fileID: 3918444326029085443}
   m_Layer: 9
   m_Name: mixamorig:LeftEye
-  m_TagString: Bot
+  m_TagString: BlueTeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -808,7 +808,7 @@ GameObject:
   - component: {fileID: 1683849310309356180}
   m_Layer: 9
   m_Name: mixamorig:RightHandRing4
-  m_TagString: Bot
+  m_TagString: BlueTeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -842,7 +842,7 @@ GameObject:
   - component: {fileID: 2061809759722077701}
   m_Layer: 9
   m_Name: mixamorig:LeftUpLeg
-  m_TagString: Bot
+  m_TagString: BlueTeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -950,7 +950,7 @@ GameObject:
   - component: {fileID: 357936463937162285}
   m_Layer: 9
   m_Name: mixamorig:RightHandIndex2
-  m_TagString: Bot
+  m_TagString: BlueTeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -985,7 +985,7 @@ GameObject:
   - component: {fileID: 2109245703257749031}
   m_Layer: 9
   m_Name: mixamorig:LeftLeg
-  m_TagString: Bot
+  m_TagString: BlueTeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1093,7 +1093,7 @@ GameObject:
   - component: {fileID: 1961020034306757179}
   m_Layer: 9
   m_Name: mixamorig:LeftHandMiddle3
-  m_TagString: Bot
+  m_TagString: BlueTeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1125,7 +1125,7 @@ GameObject:
   - component: {fileID: 8005197069876210474}
   m_Layer: 9
   m_Name: mixamorig:RightHandMiddle2
-  m_TagString: Bot
+  m_TagString: BlueTeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1157,7 +1157,7 @@ GameObject:
   - component: {fileID: 5739668807490307488}
   m_Layer: 9
   m_Name: mixamorig:HeadTop_End
-  m_TagString: Bot
+  m_TagString: BlueTeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1188,7 +1188,7 @@ GameObject:
   - component: {fileID: 2499360202481084949}
   m_Layer: 9
   m_Name: mixamorig:LeftHandRing2
-  m_TagString: Bot
+  m_TagString: BlueTeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1220,7 +1220,7 @@ GameObject:
   - component: {fileID: 8694780261810012362}
   m_Layer: 9
   m_Name: mixamorig:Spine
-  m_TagString: Bot
+  m_TagString: BlueTeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1252,7 +1252,7 @@ GameObject:
   - component: {fileID: 7968169333474444424}
   m_Layer: 9
   m_Name: mixamorig:LeftToeBase
-  m_TagString: Bot
+  m_TagString: BlueTeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1284,7 +1284,7 @@ GameObject:
   - component: {fileID: 5838669205311105565}
   m_Layer: 9
   m_Name: mixamorig:LeftHandIndex3
-  m_TagString: Bot
+  m_TagString: BlueTeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1316,7 +1316,7 @@ GameObject:
   - component: {fileID: 2853608618009328718}
   m_Layer: 9
   m_Name: mixamorig:RightHandPinky1
-  m_TagString: Bot
+  m_TagString: BlueTeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1348,7 +1348,7 @@ GameObject:
   - component: {fileID: 1980996115450481980}
   m_Layer: 9
   m_Name: mixamorig:RightHandMiddle3
-  m_TagString: Bot
+  m_TagString: BlueTeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1380,7 +1380,7 @@ GameObject:
   - component: {fileID: 5061302008920355456}
   m_Layer: 9
   m_Name: mixamorig:RightHandIndex1
-  m_TagString: Bot
+  m_TagString: BlueTeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1412,7 +1412,7 @@ GameObject:
   - component: {fileID: 9049248573163703162}
   m_Layer: 9
   m_Name: mixamorig:RightHandPinky2
-  m_TagString: Bot
+  m_TagString: BlueTeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1447,7 +1447,7 @@ GameObject:
   - component: {fileID: 3821058584668780129}
   m_Layer: 9
   m_Name: mixamorig:RightArm
-  m_TagString: Bot
+  m_TagString: BlueTeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6446,7 +6446,7 @@ GameObject:
   - component: {fileID: 6135220099833515451}
   m_Layer: 9
   m_Name: mixamorig:RightShoulder
-  m_TagString: Bot
+  m_TagString: BlueTeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6480,7 +6480,7 @@ GameObject:
   - component: {fileID: 4043390714834725421}
   m_Layer: 9
   m_Name: mixamorig:Hips
-  m_TagString: Bot
+  m_TagString: BlueTeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6493,7 +6493,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4043390714834725420}
   m_LocalRotation: {x: 1.3930912e-15, y: 0.00000001376344, z: -0.0000004417766, w: 1}
-  m_LocalPosition: {x: 0.00000006757011, y: 0.9979194, z: 0.000000484474}
+  m_LocalPosition: {x: 0.00000006757011, y: 0.7429194, z: 0.000000484474}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6543,7 +6543,7 @@ GameObject:
   - component: {fileID: 3772055031707703150}
   m_Layer: 9
   m_Name: mixamorig:RightHandThumb4
-  m_TagString: Bot
+  m_TagString: BlueTeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6580,9 +6580,10 @@ GameObject:
   - component: {fileID: 4312595920307341680}
   - component: {fileID: 4312595920307341683}
   - component: {fileID: 7862866652930966384}
+  - component: {fileID: 2686715630954965333}
   m_Layer: 9
   m_Name: Bot
-  m_TagString: Bot
+  m_TagString: BlueTeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6594,7 +6595,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4312595920307341687}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.8174713, y: -1.2469277, z: -0.09769964}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6713,6 +6714,8 @@ MonoBehaviour:
   m_HUD: {fileID: 0}
   m_maxHealth: 100
   m_team: 1
+  m_regenerate: 0
+  m_regenerateAmount: 5
 --- !u!114 &4312595920307341683
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6741,6 +6744,31 @@ MonoBehaviour:
   m_body: {fileID: 7482400136069849093}
   m_redTeammaterial: {fileID: 2100000, guid: 5922fa21698c09d4091e518ded7866c0, type: 2}
   m_blueTeammaterial: {fileID: 2100000, guid: 066276b5e364c3045bc9a2f3f17bf585, type: 2}
+--- !u!114 &2686715630954965333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4312595920307341687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86e0591126c9db64a84ca611222ca43b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_distance: 15
+  m_angle: 40
+  m_height: 15
+  m_offset: {x: 0, y: 0, z: 0}
+  m_targetLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  m_occlusionLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  m_scanFrequency: 30
+  m_sightZoneMeshColor: {r: 0, g: 1, b: 1, a: 0.5}
+  m_detectedColor: {r: 0, g: 1, b: 0, a: 1}
 --- !u!1 &4794709248412155061
 GameObject:
   m_ObjectHideFlags: 0
@@ -6752,7 +6780,7 @@ GameObject:
   - component: {fileID: 4569240030515057242}
   m_Layer: 9
   m_Name: mixamorig:RightFoot
-  m_TagString: Bot
+  m_TagString: BlueTeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6784,7 +6812,7 @@ GameObject:
   - component: {fileID: 432108828493735885}
   m_Layer: 9
   m_Name: mixamorig:RightHandMiddle1
-  m_TagString: Bot
+  m_TagString: BlueTeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6816,7 +6844,7 @@ GameObject:
   - component: {fileID: 2861946198432814114}
   m_Layer: 9
   m_Name: mixamorig:Spine1
-  m_TagString: Bot
+  m_TagString: BlueTeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6848,7 +6876,7 @@ GameObject:
   - component: {fileID: 5010264679515538382}
   m_Layer: 9
   m_Name: mixamorig:LeftHandMiddle1
-  m_TagString: Bot
+  m_TagString: BlueTeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6880,7 +6908,7 @@ GameObject:
   - component: {fileID: 4968090773334494395}
   m_Layer: 9
   m_Name: mixamorig:RightHandThumb2
-  m_TagString: Bot
+  m_TagString: BlueTeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6915,7 +6943,7 @@ GameObject:
   - component: {fileID: 5543666093347343322}
   m_Layer: 9
   m_Name: mixamorig:RightForeArm
-  m_TagString: Bot
+  m_TagString: BlueTeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7026,7 +7054,7 @@ GameObject:
   - component: {fileID: 5568554308091380135}
   m_Layer: 9
   m_Name: mixamorig:LeftArm
-  m_TagString: Bot
+  m_TagString: BlueTeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7134,7 +7162,7 @@ GameObject:
   - component: {fileID: 6736688057454336110}
   m_Layer: 9
   m_Name: mixamorig:LeftHandIndex2
-  m_TagString: Bot
+  m_TagString: BlueTeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7278,7 +7306,7 @@ GameObject:
   - component: {fileID: 1714814875246892540}
   m_Layer: 9
   m_Name: mixamorig:LeftHandThumb2
-  m_TagString: Bot
+  m_TagString: BlueTeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7310,7 +7338,7 @@ GameObject:
   - component: {fileID: 1693515427799673367}
   m_Layer: 9
   m_Name: mixamorig:LeftFoot
-  m_TagString: Bot
+  m_TagString: BlueTeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7342,7 +7370,7 @@ GameObject:
   - component: {fileID: 6394103102532321836}
   m_Layer: 9
   m_Name: mixamorig:RightToe_End
-  m_TagString: Bot
+  m_TagString: BlueTeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7373,7 +7401,7 @@ GameObject:
   - component: {fileID: 2814924551047403882}
   m_Layer: 9
   m_Name: mixamorig:LeftHandPinky3
-  m_TagString: Bot
+  m_TagString: BlueTeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7405,7 +7433,7 @@ GameObject:
   - component: {fileID: 466610660234175133}
   m_Layer: 9
   m_Name: mixamorig:LeftHandRing3
-  m_TagString: Bot
+  m_TagString: BlueTeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7437,7 +7465,7 @@ GameObject:
   - component: {fileID: 5301990544187446058}
   m_Layer: 9
   m_Name: mixamorig:RightHandRing1
-  m_TagString: Bot
+  m_TagString: BlueTeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7469,7 +7497,7 @@ GameObject:
   - component: {fileID: 8148756198380271728}
   m_Layer: 9
   m_Name: mixamorig:LeftHandThumb1
-  m_TagString: Bot
+  m_TagString: BlueTeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7501,7 +7529,7 @@ GameObject:
   - component: {fileID: 1081308432883319134}
   m_Layer: 9
   m_Name: mixamorig:LeftToe_End
-  m_TagString: Bot
+  m_TagString: BlueTeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7532,7 +7560,7 @@ GameObject:
   - component: {fileID: 7143941674253663222}
   m_Layer: 9
   m_Name: mixamorig:RightHandPinky4
-  m_TagString: Bot
+  m_TagString: BlueTeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7563,7 +7591,7 @@ GameObject:
   - component: {fileID: 3598556481256533612}
   m_Layer: 9
   m_Name: mixamorig:LeftHandPinky4
-  m_TagString: Bot
+  m_TagString: BlueTeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7608,7 +7636,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7062516001449536484}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.255, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7734,7 +7762,7 @@ GameObject:
   - component: {fileID: 7075933684552286383}
   m_Layer: 9
   m_Name: mixamorig:RightUpLeg
-  m_TagString: Bot
+  m_TagString: BlueTeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7842,7 +7870,7 @@ GameObject:
   - component: {fileID: 7729495256301226897}
   m_Layer: 9
   m_Name: mixamorig:LeftHandPinky2
-  m_TagString: Bot
+  m_TagString: BlueTeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7874,7 +7902,7 @@ GameObject:
   - component: {fileID: 8573711158917624227}
   m_Layer: 9
   m_Name: mixamorig:LeftHandPinky1
-  m_TagString: Bot
+  m_TagString: BlueTeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7906,7 +7934,7 @@ GameObject:
   - component: {fileID: 4355488549385393167}
   m_Layer: 9
   m_Name: mixamorig:RightHandMiddle4
-  m_TagString: Bot
+  m_TagString: BlueTeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7937,7 +7965,7 @@ GameObject:
   - component: {fileID: 2270241537369064509}
   m_Layer: 9
   m_Name: mixamorig:LeftHandThumb4
-  m_TagString: Bot
+  m_TagString: BlueTeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7971,7 +7999,7 @@ GameObject:
   - component: {fileID: 8414730660514273647}
   m_Layer: 9
   m_Name: mixamorig:RightLeg
-  m_TagString: Bot
+  m_TagString: BlueTeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8079,7 +8107,7 @@ GameObject:
   - component: {fileID: 6414788873370831640}
   m_Layer: 9
   m_Name: mixamorig:LeftHandMiddle4
-  m_TagString: Bot
+  m_TagString: BlueTeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8110,7 +8138,7 @@ GameObject:
   - component: {fileID: 7624224890114977292}
   m_Layer: 9
   m_Name: mixamorig:LeftHandMiddle2
-  m_TagString: Bot
+  m_TagString: BlueTeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8145,7 +8173,7 @@ GameObject:
   - component: {fileID: 8776713579645373173}
   m_Layer: 9
   m_Name: mixamorig:Spine2
-  m_TagString: Bot
+  m_TagString: BlueTeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8254,7 +8282,7 @@ GameObject:
   - component: {fileID: 1893543357192999311}
   m_Layer: 9
   m_Name: mixamorig:RightEye
-  m_TagString: Bot
+  m_TagString: BlueTeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8285,7 +8313,7 @@ GameObject:
   - component: {fileID: 4765393097593250008}
   m_Layer: 9
   m_Name: mixamorig:RightHandThumb1
-  m_TagString: Bot
+  m_TagString: BlueTeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

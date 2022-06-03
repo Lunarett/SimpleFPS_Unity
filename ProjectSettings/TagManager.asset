@@ -5,9 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - Head
-  - PlayerHit
+  - RedTeamFlag
+  - BlueTeamFlag
+  - BlueTeam
+  - RedTeam
   - Bot
-  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -16,9 +18,9 @@ TagManager:
   - Water
   - UI
   - Ground
-  - Player
+  - RedTeam
   - Arms
-  - Enemy
+  - BlueTeam
   - Projectile
   - 
   - 

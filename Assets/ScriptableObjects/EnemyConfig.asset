@@ -16,5 +16,5 @@ MonoBehaviour:
   MinShootingRange: 40
   UpdateTimer: 1
   MinDistance: 1
-  TargetTag: Player
+  TargetTag: RedTeam
   DestroyTimer: 5

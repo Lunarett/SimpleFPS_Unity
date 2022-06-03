@@ -25,4 +25,5 @@ public abstract class BotAgentBehavior : MonoBehaviour
 	public abstract Ragdoll GetRagdoll();
 	public abstract SkinnedMeshRenderer GetSkinnedMeshRenderer();
 	public abstract BotWeaponIK GetWeaponIK();
+	public abstract AISightSensor GetAISightSensor();
 }

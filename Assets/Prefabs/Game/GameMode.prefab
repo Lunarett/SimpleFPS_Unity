@@ -45,7 +45,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_playerPrefab: {fileID: 47716270809907476, guid: 7dd39e5b3ab05b0428b57f85e28b8090, type: 3}
-  m_spawnPoints:
+  m_botPrefab: {fileID: 4312595920307341687, guid: 0e0762f8da6c0774b980c937514572a9, type: 3}
+  m_redTeamSpawnPoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  m_blueTeamSpawnPoints:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
