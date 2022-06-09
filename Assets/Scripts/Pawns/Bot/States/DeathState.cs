@@ -9,18 +9,18 @@ public class DeathState : IBotState
 		return BotStateID.Death;
 	}
 	
-	public void Enter(BotAgentBehavior agent)
+	public void Enter(AIAgentBehavior agent)
 	{
 		agent.GetNavMeshAgent().isStopped = true;
 		agent.GetRagdoll().ActivateRagdoll();
 		agent.GetSkinnedMeshRenderer().updateWhenOffscreen = true;
 	}
 
-	public void Update(BotAgentBehavior agent)
+	public void Update(AIAgentBehavior agent)
 	{
 	}
 
-	public void Exit(BotAgentBehavior agent)
+	public void Exit(AIAgentBehavior agent)
 	{
 
 	}

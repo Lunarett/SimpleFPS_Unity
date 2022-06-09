@@ -5536,11 +5536,11 @@ MonoBehaviour:
   m_forwardMultiplier: 1
   m_backwardsMultiplier: 0.8
   m_sidewaysMultiplier: 0.8
-  m_HUD: {fileID: 1973449467}
   m_maxFuel: 100
-  m_fuelConsumptionSpeed: 50
+  m_fuelConsumptionSpeed: 0
   m_fuelRegenerationSpeed: 5
   m_thrustPower: 700
+  m_HUD: {fileID: 1973449467}
 --- !u!114 &47716270809907499
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5570,8 +5570,8 @@ MonoBehaviour:
   m_HUD: {fileID: 1973449467}
   m_maxHealth: 100
   m_team: 0
-  m_regenerate: 0
-  m_regenerateAmount: 5
+  m_regenerate: 1
+  m_regenerationSpeed: 5
 --- !u!114 &47716270809907496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5709,6 +5709,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 37717c56-8f1b-46a1-97e5-2629e9698f48
     m_ActionName: Player/Fly[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 1bc6a0e7-a1d3-4f85-a5e4-b50fac3aa91d
+    m_ActionName: Player/VerticalMovement[/Keyboard/q,/Keyboard/e,/XInputControllerWindows/leftTrigger,/XInputControllerWindows/rightTrigger]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

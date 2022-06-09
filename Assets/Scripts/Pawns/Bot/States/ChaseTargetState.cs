@@ -13,13 +13,17 @@ public class ChaseTargetState : IBotState
 		return BotStateID.ChaseTarget;
 	}
 
-	public void Enter(BotAgentBehavior agent)
+	public void Enter(AIAgentBehavior agent)
 	{
 	}
 
-	public void Update(BotAgentBehavior agent)
+	public void Update(AIAgentBehavior agent)
 	{
-		if(agent.GetTarget() == null) { agent.SetTarget(GameObject.FindGameObjectWithTag(agent.GetConfig().TargetTag).transform); }
+		if(agent.GetTarget() == null) 
+		{ 
+			agent.SetTarget(GameObject.FindGameObjectWithTag("RedTeam").transform);
+			return;
+		}
 
 		if (agent.Gethealth().CurrentHealth <= 0)
 		{
@@ -50,12 +54,12 @@ public class ChaseTargetState : IBotState
 		MoveToTarget(agent);
 	}
 
-	public void Exit(BotAgentBehavior agent)
+	public void Exit(AIAgentBehavior agent)
 	{
 
 	}
 
-	private void MoveToTarget(BotAgentBehavior agent)
+	private void MoveToTarget(AIAgentBehavior agent)
 	{
 		if (!agent.enabled)
 			return;
@@ -84,7 +88,7 @@ public class ChaseTargetState : IBotState
 		}
 	}
 
-	private bool InRange(BotAgentBehavior agent, float distance)
+	private bool InRange(AIAgentBehavior agent, float distance)
 	{
 		float dist = Vector3.Distance(agent.GetTarget().position, agent.transform.position);
 		return dist < distance;

@@ -25,7 +25,7 @@ public class BotWeaponIK : MonoBehaviour
 	[SerializeField] private HumanBone[] m_humanBones;
 
 	private Transform[] m_boneTransforms;
-	private BotAgent m_agent;
+	private AIAgent m_agent;
 	private Transform m_targetTransform;
 	private Health m_health;
 	private Animator m_anim;
@@ -33,7 +33,7 @@ public class BotWeaponIK : MonoBehaviour
 	private void Awake()
 	{
 		m_health = GetComponent<Health>();
-		m_agent = GetComponent<BotAgent>();
+		m_agent = GetComponent<AIAgent>();
 		m_anim = GetComponent<Animator>();
 
 	}

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent))]
-public class BotLocomotion : MonoBehaviour
+public class AIController : MonoBehaviour
 {
 	NavMeshAgent agent;
 	Animator anim;

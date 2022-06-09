@@ -11,18 +11,19 @@ public class Health : MonoBehaviour, IDamageable
 {
 	[Header("References")]
 	[SerializeField] private HUD m_HUD;
-	
+
 	[Header("Health Properties")]
 	[SerializeField] private float m_maxHealth = 100;
 	[SerializeField] private ETeams m_team;
 
 	[Header("Regeneration Properties")]
 	[SerializeField] private bool m_regenerate;
-	[SerializeField] private float m_regenerateAmount = 5.0f;
+	[SerializeField] private float m_regenerationSpeed = 5.0f;
 
 	private float m_currentHealth;
+	private bool m_dead = true;
 
-	public event Action OnDeath;
+	public event Action<GameObject, GameObject> OnDeath;
 	public event Action OnHealthChanged;
 
 	public float CurrentHealth { get => m_currentHealth; }
@@ -33,7 +34,7 @@ public class Health : MonoBehaviour, IDamageable
 	{
 		m_currentHealth = m_maxHealth;
 
-		if(m_HUD != null)
+		if (m_HUD != null)
 		{
 			m_HUD.UpdateHealthBar(m_currentHealth, m_maxHealth);
 		}
@@ -41,20 +42,33 @@ public class Health : MonoBehaviour, IDamageable
 
 	private void Update()
 	{
-		
+		if (m_regenerate)
+		{
+			Heal(m_regenerationSpeed * Time.deltaTime);
+		}
 	}
 
 	public void Damage(float damageAmount, GameObject instigator)
 	{
-		if(IsFriendly(instigator)) { return; }
+		if (IsFriendly(instigator)) { return; }
 
-		OnHealthChanged?.Invoke();
-		
-		m_currentHealth = Mathf.Clamp(m_currentHealth -= damageAmount, 0, m_maxHealth);
+		if (m_currentHealth <= 0)
+		{
+			if (m_dead)
+			{
+				m_dead = false;
+				Debug.Log("FFFFFFFFFFF");
+				OnDeath?.Invoke(gameObject, instigator);
+			}
+		}
+		else
+		{
+			m_currentHealth = Mathf.Clamp(m_currentHealth -= damageAmount, 0, m_maxHealth);
 
-		if (m_currentHealth <= 0) Death();
+			OnHealthChanged?.Invoke();
+		}
 
-		if(m_HUD != null)
+		if (m_HUD != null)
 		{
 			m_HUD.UpdateHealthBar(m_currentHealth, m_maxHealth);
 		}
@@ -65,11 +79,6 @@ public class Health : MonoBehaviour, IDamageable
 		OnHealthChanged?.Invoke();
 
 		m_currentHealth = Mathf.Clamp(m_currentHealth += healAmount, 0, m_maxHealth);
-	}
-
-	private void Death()
-	{
-		OnDeath?.Invoke();
 	}
 
 	private bool IsFriendly(GameObject instigator)
@@ -83,7 +92,7 @@ public class Health : MonoBehaviour, IDamageable
 
 		Health instigatorHealth = instigator.GetComponent<Health>();
 
-		if(instigatorHealth != null)
+		if (instigatorHealth != null)
 		{
 			return (int)instigatorHealth.Team == (int)m_team ? true : false;
 		}

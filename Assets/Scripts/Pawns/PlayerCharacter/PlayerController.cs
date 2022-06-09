@@ -23,12 +23,14 @@ public class PlayerController : PlayerControllerBehavior
 	[SerializeField] private float m_sidewaysMultiplier = 0.8f;
 
 	[Header("Jetpack Properties")]
-	[SerializeField] private HUD m_HUD;
 	[SerializeField] private float m_maxFuel = 100.0f;
 	[SerializeField] private float m_fuelConsumptionSpeed = 5.0f;
 	[SerializeField] private float m_fuelRegenerationSpeed = 5.0f;
 	[Space]
 	[SerializeField] private float m_thrustPower = 5.0f;
+
+	[Header("HUD")]
+	[SerializeField] private HUD m_HUD;
 
 	private readonly RaycastHit[] m_groundHits = new RaycastHit[8];
 

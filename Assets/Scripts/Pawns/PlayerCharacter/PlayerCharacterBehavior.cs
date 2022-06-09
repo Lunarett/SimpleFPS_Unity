@@ -13,7 +13,9 @@ public abstract class PlayerCharacterBehavior : MonoBehaviour
 
 	// Methods
 	public abstract void SetPaused(bool paused);
+	public abstract void SetCharacterID(int id);
 
 	// Getters
 	public abstract bool IsPaused();
+	public abstract int GetCharacterID();
 }

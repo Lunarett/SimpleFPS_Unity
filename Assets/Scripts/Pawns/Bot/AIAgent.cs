@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class BotAgent : BotAgentBehavior
+public class AIAgent : AIAgentBehavior
 {
 	[Header("Bot Properties")]
 	[SerializeField] private BotStateMachine m_stateMachine;
@@ -19,6 +19,7 @@ public class BotAgent : BotAgentBehavior
 	private SkinnedMeshRenderer m_skinnedMesh;
 	private BotWeaponIK m_weaponIK;
 	private AISightSensor m_sightSensor;
+	private int m_charcterID = 0;
 
 	public override BotStateMachine GetStateMachine() => m_stateMachine;
 	public override EnemyAgentConfig GetConfig() => m_config;
@@ -68,12 +69,22 @@ public class BotAgent : BotAgentBehavior
 		m_stateMachine.Update();
 	}
 
+	public override void SetCharacterID(int id)
+	{
+		m_charcterID = id;
+	}
+
+	public override int GetCharacterID()
+	{
+		return m_charcterID;
+	}
+
 	public override void SetTarget(Transform target)
 	{
 		m_target = target;
 	}
 
-	private void DestroyEnemy()
+	private void DestroyEnemy(GameObject killedPawn, GameObject killerPawn)
 	{
 		StartCoroutine(DestroyDelay());
 	}

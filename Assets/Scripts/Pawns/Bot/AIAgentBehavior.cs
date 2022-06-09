@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public abstract class BotAgentBehavior : MonoBehaviour
+public abstract class AIAgentBehavior : MonoBehaviour
 {
 	// Unity Default Methods
 	protected virtual void Awake() { }
@@ -13,9 +13,11 @@ public abstract class BotAgentBehavior : MonoBehaviour
 	protected virtual void LateUpdate() { }
 
 	// Methods
+	public abstract void SetCharacterID(int id);
 	public abstract void SetTarget(Transform target);
 
 	// Getters
+	public abstract int GetCharacterID();
 	public abstract BotStateMachine GetStateMachine();
 	public abstract EnemyAgentConfig GetConfig();
 	public abstract WeaponBehavior GetWeapon();

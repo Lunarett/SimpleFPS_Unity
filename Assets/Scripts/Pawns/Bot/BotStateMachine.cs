@@ -5,10 +5,10 @@ using UnityEngine;
 public class BotStateMachine
 {
 	public IBotState[] EnemyStates;
-	public BotAgent Agent;
+	public AIAgent Agent;
 	public BotStateID CurrentState;
 
-	public BotStateMachine(BotAgent agent)
+	public BotStateMachine(AIAgent agent)
 	{
 		Agent = agent;
 		int numStates = System.Enum.GetNames(typeof(BotStateID)).Length;

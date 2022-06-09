@@ -8,7 +8,10 @@ public class PlayerCharacter : PlayerCharacterBehavior
 	[SerializeField] private bool m_isPaused = false;
 	[SerializeField] private WeaponBehavior m_weapon;
 
+	private int m_playerID = 0;
+
 	public override bool IsPaused() => m_isPaused;
+	public override int GetCharacterID() => m_playerID;
 
 	protected override void Awake()
 	{
@@ -34,6 +37,11 @@ public class PlayerCharacter : PlayerCharacterBehavior
 			Cursor.visible = false;
 			Cursor.lockState = CursorLockMode.Locked;
 		}
+	}
+
+	public override void SetCharacterID(int id)
+	{
+		m_playerID = id;
 	}
 
 	public void OnPause(InputAction.CallbackContext context)

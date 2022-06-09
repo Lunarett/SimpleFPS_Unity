@@ -9,15 +9,15 @@ public class IdleState : IBotState
 		return BotStateID.Idle;
 	}
 	
-	public void Enter(BotAgentBehavior agent)
+	public void Enter(AIAgentBehavior agent)
 	{
 	}
 	
-	public void Update(BotAgentBehavior agent)
+	public void Update(AIAgentBehavior agent)
 	{
 	}
 
-	public void Exit(BotAgentBehavior agent)
+	public void Exit(AIAgentBehavior agent)
 	{
 	}
 }

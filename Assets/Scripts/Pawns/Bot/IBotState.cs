@@ -13,7 +13,7 @@ public interface IBotState
 {
 	BotStateID GetID();
 
-	void Enter(BotAgentBehavior agent);
-	void Update(BotAgentBehavior agent);
-	void Exit(BotAgentBehavior agent);
+	void Enter(AIAgentBehavior agent);
+	void Update(AIAgentBehavior agent);
+	void Exit(AIAgentBehavior agent);
 }
