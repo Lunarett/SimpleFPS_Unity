@@ -10,6 +10,7 @@ TagManager:
   - BlueTeam
   - RedTeam
   - Bot
+  - Flag
   layers:
   - Default
   - TransparentFX
@@ -22,8 +23,8 @@ TagManager:
   - Arms
   - BlueTeam
   - Projectile
-  - 
-  - 
+  - Pawn
+  - Body
   - 
   - 
   - 

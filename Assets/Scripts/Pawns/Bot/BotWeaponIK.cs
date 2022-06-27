@@ -10,7 +10,7 @@ public class HumanBone
 	[SerializeField] private float m_weight = 1;
 
 	public Transform Bone { get => m_bone; }
-	public float Weight { get => m_weight; }
+	public float Weight { get => m_weight; set { m_weight = value; } }
 }
 
 public class BotWeaponIK : MonoBehaviour
@@ -40,7 +40,6 @@ public class BotWeaponIK : MonoBehaviour
 
 	private void Start()
 	{
-		m_targetTransform = GameObject.FindGameObjectWithTag("RedTeam").transform;
 		m_boneTransforms = new Transform[m_humanBones.Length];
 		for (int i = 0; i < m_boneTransforms.Length; i++)
 		{
@@ -48,9 +47,6 @@ public class BotWeaponIK : MonoBehaviour
 
 			if (m_boneTransforms[i] == null) Debug.LogError($"Failed to add transform at index {i}");
 		}
-
-		if (m_targetTransform == null) Debug.LogError("Target is missing");
-		if (m_fireLocation == null) Debug.LogError("Fire Location is missing");
 	}
 
 	private void LateUpdate()
@@ -115,5 +111,10 @@ public class BotWeaponIK : MonoBehaviour
 	public void SetFireLocation(Transform pos)
 	{
 		m_fireLocation = pos;
+	}
+
+	public void SetWeight(float weight)
+	{
+		m_weight = weight;
 	}
 }

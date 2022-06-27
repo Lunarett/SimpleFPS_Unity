@@ -57,7 +57,6 @@ public class Health : MonoBehaviour, IDamageable
 			if (m_dead)
 			{
 				m_dead = false;
-				Debug.Log("FFFFFFFFFFF");
 				OnDeath?.Invoke(gameObject, instigator);
 			}
 		}
@@ -86,7 +85,6 @@ public class Health : MonoBehaviour, IDamageable
 		// If either are null assume they are friendly
 		if (instigator == null)
 		{
-			Debug.LogWarning("Instigators is Null");
 			return true;
 		}
 

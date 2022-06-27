@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 113040617}
   - component: {fileID: 113040619}
   - component: {fileID: 113040618}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 445608850}
   - component: {fileID: 445608852}
   - component: {fileID: 445608851}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: Crosshair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -161,7 +161,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 744697005}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -199,7 +199,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1254918003}
   - component: {fileID: 1254918004}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: HealthProgressBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -292,7 +292,7 @@ GameObject:
   - component: {fileID: 1736074974}
   - component: {fileID: 1736074973}
   - component: {fileID: 1973449467}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: HUD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5220,7 +5220,7 @@ GameObject:
   - component: {fileID: 1950433694}
   - component: {fileID: 1950433696}
   - component: {fileID: 1950433695}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5294,7 +5294,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7201317334968899654}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5334,7 +5334,7 @@ GameObject:
   - component: {fileID: 47716270720814650}
   - component: {fileID: 47716270720814651}
   - component: {fileID: 47716270720814648}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Eyes
   m_TagString: RedTeam
   m_Icon: {fileID: 0}
@@ -5435,7 +5435,8 @@ GameObject:
   - component: {fileID: 47716270809907499}
   - component: {fileID: 8810903780181398699}
   - component: {fileID: 47716270809907496}
-  m_Layer: 7
+  - component: {fileID: 181173141259696287}
+  m_Layer: 11
   m_Name: Player
   m_TagString: RedTeam
   m_Icon: {fileID: 0}
@@ -5718,6 +5719,19 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &181173141259696287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 47716270809907476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c5c20e8e0b5a4e44ae39f94e533697d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_flagTransform: {fileID: 5507707353554144617}
 --- !u!1 &47716271044309372
 GameObject:
   m_ObjectHideFlags: 0
@@ -5727,7 +5741,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 47716271044309375}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: PlayerMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5749,6 +5763,7 @@ Transform:
   - {fileID: 47716272474349248}
   - {fileID: 47716271363485192}
   - {fileID: 47716271803180342}
+  - {fileID: 5507707353554144617}
   m_Father: {fileID: 47716270809907479}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5894,7 +5909,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 47716271803180342}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5927,7 +5942,7 @@ GameObject:
   - component: {fileID: 47716272474349248}
   - component: {fileID: 47716272474349250}
   - component: {fileID: 47716272474349251}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Torso
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6107,7 +6122,7 @@ GameObject:
   - component: {fileID: 5470864769551741767}
   - component: {fileID: 2308382816363457991}
   - component: {fileID: 1758886034940461054}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Camera Depth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6242,7 +6257,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2657185225269660338}
   - component: {fileID: 1631142389359410452}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: FuelProgressBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6333,7 +6348,7 @@ GameObject:
   - component: {fileID: 5753983704373267748}
   - component: {fileID: 6810027075593298009}
   - component: {fileID: 5966697561915664257}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6409,7 +6424,7 @@ GameObject:
   - component: {fileID: 7473279964300418231}
   - component: {fileID: 1268790932867829927}
   - component: {fileID: 6580955297606389248}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6474,6 +6489,37 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &4930232921817489100
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5507707353554144617}
+  m_Layer: 11
+  m_Name: FlagHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5507707353554144617
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4930232921817489100}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.14, z: -0.127}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 47716271044309375}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7244628329154404671
 GameObject:
   m_ObjectHideFlags: 0
@@ -6483,7 +6529,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7164190777872290719}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: FPSCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6517,7 +6563,7 @@ GameObject:
   - component: {fileID: 2862960356816189821}
   - component: {fileID: 8380959561093791768}
   - component: {fileID: 4673590011706858101}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -6571,7 +6617,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 631
+    m_Bits: 3839
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0

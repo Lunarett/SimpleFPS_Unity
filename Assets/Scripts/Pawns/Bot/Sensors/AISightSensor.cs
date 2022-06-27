@@ -27,6 +27,15 @@ public class AISightSensor : MonoBehaviour
 	private float m_scanInterval;
 	private float m_scanTimer;
 
+	public List<GameObject> ObjectList
+	{
+		get
+		{
+			m_objectList.RemoveAll(obj => !obj);
+			return m_objectList;
+		}
+	}
+
 	private void Start()
 	{
 		m_scanInterval = 1.0f / m_scanFrequency;

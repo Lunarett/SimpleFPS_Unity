@@ -2,6 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum EAISpawnState
+{
+	DontSpawn,
+	SpawnOnlyOne,
+	SpawnWholeTeam
+}
+
 public class GameMode : MonoBehaviour
 {
 	[SerializeField] private GameObject m_playerPrefab;
@@ -11,11 +18,16 @@ public class GameMode : MonoBehaviour
 	[SerializeField] private Transform[] m_redTeamSpawnPoints;
 	[SerializeField] private Transform[] m_blueTeamSpawnPoints;
 
+	[Header("Team Flags")]
+	[SerializeField] private GameObject m_redTeamFlag;
+	[SerializeField] private GameObject m_blueTeamFlag;
+
 	[Header("Respawn Properties")]
 	[SerializeField] private float m_respawnDelay = 5.0f;
+	[SerializeField] private float m_flagReturnDelay = 5.0f;
 
 	[Header("Debug Properties")]
-	[SerializeField] private bool m_disableAISpawn;
+	[SerializeField] private EAISpawnState m_aiSpawnState;
 	[SerializeField] private bool m_disablePlayerSpawn;
 
 	private int m_redTeamScore = 0;
@@ -27,10 +39,7 @@ public class GameMode : MonoBehaviour
 	{
 		if (!m_disablePlayerSpawn) SpawnPlayer(Random.Range(0, m_redTeamSpawnPoints.Length));
 
-		for (int i = 0; i < m_blueTeamSpawnPoints.Length; i++)
-		{
-			if (!m_disableAISpawn) SpawnAI(i);
-		}
+		SpawnAI(m_aiSpawnState);
 	}
 
 	private void OnPlayerDeath(GameObject killedPawn, GameObject killerPawn)
@@ -39,7 +48,8 @@ public class GameMode : MonoBehaviour
 
 		if (flag != null)
 		{
-			flag.Reset();
+			flag.DropFlag(killedPawn);
+			StartCoroutine(StartFlagResetTimer(m_flagReturnDelay, flag));
 		}
 
 		PlayerCharacterBehavior characterBehavior = killedPawn.GetComponent<PlayerCharacterBehavior>();
@@ -48,6 +58,13 @@ public class GameMode : MonoBehaviour
 		{
 			StartCoroutine(EnterSpectatorMode(m_respawnDelay, characterBehavior.GetCharacterID()));
 		}
+	}
+
+	IEnumerator StartFlagResetTimer(float seconds, PickupFlag pf)
+	{
+		yield return new WaitForSeconds(seconds);
+
+		pf.ReturnFlagToBase();
 	}
 
 	IEnumerator EnterSpectatorMode(float duration, int id)
@@ -78,7 +95,7 @@ public class GameMode : MonoBehaviour
 	{
 		yield return new WaitForSeconds(duration);
 
-		SpawnAI(id);
+		SpawnAIByIndex(id);
 	}
 
 	private void SpawnPlayer(int i)
@@ -100,7 +117,25 @@ public class GameMode : MonoBehaviour
 		}
 	}
 
-	private void SpawnAI(int i)
+	private void SpawnAI(EAISpawnState aiSpawnState)
+	{
+		switch (aiSpawnState)
+		{
+			case EAISpawnState.SpawnOnlyOne:
+				SpawnAIByIndex(0);
+				break;
+			case EAISpawnState.SpawnWholeTeam:
+				for (int i = 0; i < m_blueTeamSpawnPoints.Length; i++)
+				{
+					SpawnAIByIndex(i);
+				}
+				break;
+			default:
+				break;
+		}
+	}
+
+	private void SpawnAIByIndex(int i)
 	{
 		Debug.Log($"spawning AI with ID: {i}");
 		GameObject go = Instantiate(m_AIPrefab, m_blueTeamSpawnPoints[i].position, m_blueTeamSpawnPoints[i].rotation);
@@ -110,6 +145,8 @@ public class GameMode : MonoBehaviour
 		if( agentBehavior != null)
 		{
 			agentBehavior.SetCharacterID(i);
+			agentBehavior.SetOpposingTeamFlag(m_redTeamFlag.transform);
+			agentBehavior.SetTeamFlag(m_blueTeamFlag.transform);
 		}
 
 		Health aiHealth = go.GetComponent<Health>();
@@ -120,12 +157,7 @@ public class GameMode : MonoBehaviour
 		}
 	}
 
-	public void RedTeamScored()
-	{
-
-	}
-
-	public void BlueTeamScored()
+	public void AddTeamScore(ETeams team, int score)
 	{
 
 	}

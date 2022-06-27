@@ -12,25 +12,33 @@ public class AIAgent : AIAgentBehavior
 	[Space]
 	[SerializeField] private BotStateID m_initialState;
 
-	private Transform m_target;
+	private Transform m_opposingTeamFlag;
+	private Transform m_teamFlag;
+	private Transform m_enemyTarget;
 	private Health m_health;
 	private NavMeshAgent m_navMeshAgent;
 	private Ragdoll m_ragdoll;
 	private SkinnedMeshRenderer m_skinnedMesh;
 	private BotWeaponIK m_weaponIK;
 	private AISightSensor m_sightSensor;
+	private FlagHolder m_flagHolder;
+
 	private int m_charcterID = 0;
+	float m_timer = 0;
 
 	public override BotStateMachine GetStateMachine() => m_stateMachine;
 	public override EnemyAgentConfig GetConfig() => m_config;
 	public override WeaponBehavior GetWeapon() => m_weapon;
 	public override NavMeshAgent GetNavMeshAgent() => m_navMeshAgent;
 	public override Health Gethealth() => m_health;
-	public override Transform GetTarget() => m_target;
+	public override Transform GetOpposingTeamFlag() => m_opposingTeamFlag;
+	public override Transform GetTeamFlag() => m_teamFlag;
+	public override Transform GetEnemyTarget() => m_enemyTarget;
 	public override Ragdoll GetRagdoll() => m_ragdoll;
 	public override SkinnedMeshRenderer GetSkinnedMeshRenderer() => m_skinnedMesh;
 	public override BotWeaponIK GetWeaponIK() => m_weaponIK;
 	public override AISightSensor GetAISightSensor() => m_sightSensor;
+	public override FlagHolder GetFlagHolder() => m_flagHolder;
 
 	protected override void Awake()
 	{
@@ -41,6 +49,8 @@ public class AIAgent : AIAgentBehavior
 		m_skinnedMesh = GetComponentInChildren<SkinnedMeshRenderer>();
 		m_sightSensor = GetComponent<AISightSensor>();
 		m_health = GetComponent<Health>();
+		m_flagHolder = GetComponent<FlagHolder>();
+		m_weaponIK = GetComponent<BotWeaponIK>();
 
 		m_health.OnDeath += DestroyEnemy;
 
@@ -48,11 +58,11 @@ public class AIAgent : AIAgentBehavior
 
 	protected override void Start()
 	{
-		m_target = GameObject.FindGameObjectWithTag("RedTeam").transform;
+		//m_opposingTeamFlag = GameObject.FindGameObjectWithTag("RedTeam").transform;
 		m_stateMachine = new BotStateMachine(this);
-		m_stateMachine.RegisterState(new ChaseTargetState());
+		m_stateMachine.RegisterState(new AttackState());
 		m_stateMachine.RegisterState(new DeathState());
-		m_stateMachine.RegisterState(new IdleState());
+		m_stateMachine.RegisterState(new CaptureFlagState());
 		m_stateMachine.ChangeState(m_initialState);
 
 		StartCoroutine(LateStart());
@@ -79,9 +89,44 @@ public class AIAgent : AIAgentBehavior
 		return m_charcterID;
 	}
 
-	public override void SetTarget(Transform target)
+	public override void SetOpposingTeamFlag(Transform target)
 	{
-		m_target = target;
+		m_opposingTeamFlag = target;
+	}
+
+	public override void SetTeamFlag(Transform target)
+	{
+		m_teamFlag = target;
+	}
+
+	public override void SetEnemyTarget(Transform target)
+	{
+		m_enemyTarget = target;
+	}
+
+	public override void MoveTo(Transform location)
+	{
+		m_timer -= Time.deltaTime;
+		if (!m_navMeshAgent.hasPath)
+		{
+			m_navMeshAgent.destination = location.position;
+		}
+
+		if (m_timer < 0)
+		{
+			Vector3 dir = (location.position - m_navMeshAgent.destination);
+			dir.y = 0;
+
+			if (dir.sqrMagnitude > m_config.MinDistance * m_config.MinDistance)
+			{
+				if (m_navMeshAgent.pathStatus != NavMeshPathStatus.PathPartial)
+				{
+					m_navMeshAgent.destination = location.position;
+				}
+			}
+
+			m_timer = m_config.UpdateTimer;
+		}
 	}
 
 	private void DestroyEnemy(GameObject killedPawn, GameObject killerPawn)
