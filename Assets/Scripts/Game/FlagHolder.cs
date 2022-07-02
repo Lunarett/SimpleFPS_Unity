@@ -28,12 +28,12 @@ public class FlagHolder : MonoBehaviour
 		flag.transform.localRotation = m_flagTransform.localRotation;
 	}
 
-	public void DropFlag(GameObject flag)
+	public void DropFlag()
 	{
 		m_isHoldingFlag = false;
 
-		flag.transform.SetParent(null);
-		flag.transform.rotation = Quaternion.identity;
+		m_flag.transform.SetParent(null);
+		m_flag.transform.rotation = Quaternion.identity;
 	}
 
 	public void ReturnFlagToBase()

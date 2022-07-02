@@ -45,7 +45,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.6206092
+  m_Radius: 1.77
   m_Height: 17.060696
   m_Direction: 2
   m_Center: {x: 0, y: -0.09189818, z: 6.97721}
@@ -186,6 +186,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_duration: 1
+  m_damage: 10
+  m_damageableMask:
+    serializedVersion: 2
+    m_Bits: 2048
   m_impactEffects:
   - m_name: Concrete
     m_impactParticlePrefab: {fileID: 3799121773557142450, guid: 82558f54cdbe8864697c2059cbd638c0, type: 3}

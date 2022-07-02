@@ -6,37 +6,37 @@ public class CaptureFlagState : IBotState
 {
 	public BotStateID GetID()
 	{
-		return BotStateID.Idle;
+		return BotStateID.CaptureFlag;
 	}
 	
 	public void Enter(AIAgentBehavior agent)
 	{
-		agent.GetWeaponIK().SetWeight(0.0f);
+		agent.GetWeaponIK().SetWeight(1);
 	}
 	
 	public void Update(AIAgentBehavior agent)
 	{
-		if (agent.Gethealth().CurrentHealth <= 0)
+		if (agent.GetHealth().CurrentHealth <= 0)
 		{
 			agent.GetNavMeshAgent().destination = agent.transform.position;
 			agent.GetStateMachine().ChangeState(BotStateID.Death);
 		}
 
-		if (agent.GetEnemyTarget() == null)
+		if(agent.GetTarget().HasTarget)
 		{
-			if(FindEnemy(agent) != null)
-			{
-				agent.SetEnemyTarget(FindEnemy(agent).transform);
-			}
-		}
-		else
-		{
-			agent.GetStateMachine().ChangeState(BotStateID.ChaseTarget);
+			agent.GetStateMachine().ChangeState(BotStateID.Attack);
 		}
 
 		if(!agent.GetFlagHolder().IsHoldingFlag)
 		{
-			agent.MoveTo(agent.GetOpposingTeamFlag());
+			if(agent.GetOpposingTeamFlag() != null)
+			{
+				agent.MoveTo(agent.GetOpposingTeamFlag());
+			}
+			else
+			{
+				agent.MoveTo(agent.transform);
+			}
 		}
 		else
 		{
@@ -46,21 +46,6 @@ public class CaptureFlagState : IBotState
 
 	public void Exit(AIAgentBehavior agent)
 	{
-	}
-
-	private GameObject FindEnemy(AIAgentBehavior agent)
-	{
-		if(agent.GetAISightSensor().ObjectList.Count > 0)
-		{
-			for (int i = 0; i < agent.GetAISightSensor().ObjectList.Count; i++)
-			{
-				if (agent.GetAISightSensor().ObjectList[i].GetComponent<Health>().Team != agent.Gethealth().Team)
-				{
-					return agent.GetAISightSensor().ObjectList[i];
-				}
-			}
-		}
-
-		return null;
+		agent.GetNavMeshAgent().destination = agent.transform.position;
 	}
 }

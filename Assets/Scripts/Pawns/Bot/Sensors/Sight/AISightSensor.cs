@@ -15,8 +15,11 @@ public class AISightSensor : MonoBehaviour
 	[SerializeField] private LayerMask m_occlusionLayerMask;
 	[Space]
 	[SerializeField] private int m_scanFrequency = 30;
-	
+
 	[Header("Gizmos Properties")]
+	[SerializeField] private bool m_showVisionZone = true;
+	[SerializeField] private bool m_markObjectsInSight = true;
+	[Space]
 	[SerializeField] private Color m_sightZoneMeshColor = Color.cyan;
 	[SerializeField] private Color m_detectedColor = Color.green;
 
@@ -26,6 +29,12 @@ public class AISightSensor : MonoBehaviour
 	private int m_count;
 	private float m_scanInterval;
 	private float m_scanTimer;
+	private Health m_health;
+
+	public float Distance { get => m_distance; }
+	public float Angle { get => m_angle; }
+	public float Height { get => m_height; }
+	public LayerMask TargetLayerMask { get => m_targetLayerMask; }
 
 	public List<GameObject> ObjectList
 	{
@@ -34,6 +43,11 @@ public class AISightSensor : MonoBehaviour
 			m_objectList.RemoveAll(obj => !obj);
 			return m_objectList;
 		}
+	}
+
+	private void Awake()
+	{
+		m_health = GetComponent<Health>();
 	}
 
 	private void Start()
@@ -97,6 +111,33 @@ public class AISightSensor : MonoBehaviour
 		}
 
 		return true;
+	}
+
+	public int Filter(GameObject[] buffer, string layerName)
+	{
+		int layer = LayerMask.NameToLayer(layerName);
+		int count = 0;
+
+		foreach (var obj in m_objectList)
+		{
+			if(obj.layer == layer)
+			{
+				Health h = obj.GetComponent<Health>();
+
+				if(h != null)
+				{
+					if (h.Team != m_health.Team)
+						buffer[count++] = obj;
+				}
+			}
+
+			if (buffer.Length == count)
+			{
+				break;
+			}
+		}
+
+		return count;
 	}
 
 	private Mesh CreateSightZoneMesh()
@@ -188,6 +229,7 @@ public class AISightSensor : MonoBehaviour
 
 	private void OnValidate()
 	{
+		m_health = GetComponent<Health>();
 		m_sightZoneMesh = CreateSightZoneMesh();
 		m_sightZoneMeshColor = new Color(m_sightZoneMeshColor.r, m_sightZoneMeshColor.g, m_sightZoneMeshColor.b, 0.5f);
 		m_scanInterval = 1.0f / m_scanFrequency;
@@ -195,13 +237,13 @@ public class AISightSensor : MonoBehaviour
 
 	private void OnDrawGizmos()
 	{
-		if(m_sightZoneMesh)
+		if(m_showVisionZone && m_sightZoneMesh)
 		{
 			Gizmos.color = m_sightZoneMeshColor;
 			Gizmos.DrawMesh(m_sightZoneMesh, transform.position + m_offset, transform.rotation);
+			
+			Gizmos.DrawWireSphere(transform.position, m_distance);
 		}
-
-		Gizmos.DrawWireSphere(transform.position, m_distance);
 
 		for (int i = 0; i < m_count; ++i)
 		{
@@ -209,7 +251,7 @@ public class AISightSensor : MonoBehaviour
 		}
 
 		Gizmos.color = m_detectedColor;
-		foreach(var obj in m_objectList)
+		foreach (var obj in m_objectList)
 		{
 			Gizmos.DrawSphere(obj.transform.position, 0.2f);
 		}

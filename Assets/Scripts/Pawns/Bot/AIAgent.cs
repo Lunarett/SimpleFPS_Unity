@@ -22,6 +22,8 @@ public class AIAgent : AIAgentBehavior
 	private BotWeaponIK m_weaponIK;
 	private AISightSensor m_sightSensor;
 	private FlagHolder m_flagHolder;
+	private Transform m_spawnTransform;
+	private AiTargetingSystem m_target;
 
 	private int m_charcterID = 0;
 	float m_timer = 0;
@@ -30,7 +32,7 @@ public class AIAgent : AIAgentBehavior
 	public override EnemyAgentConfig GetConfig() => m_config;
 	public override WeaponBehavior GetWeapon() => m_weapon;
 	public override NavMeshAgent GetNavMeshAgent() => m_navMeshAgent;
-	public override Health Gethealth() => m_health;
+	public override Health GetHealth() => m_health;
 	public override Transform GetOpposingTeamFlag() => m_opposingTeamFlag;
 	public override Transform GetTeamFlag() => m_teamFlag;
 	public override Transform GetEnemyTarget() => m_enemyTarget;
@@ -39,6 +41,8 @@ public class AIAgent : AIAgentBehavior
 	public override BotWeaponIK GetWeaponIK() => m_weaponIK;
 	public override AISightSensor GetAISightSensor() => m_sightSensor;
 	public override FlagHolder GetFlagHolder() => m_flagHolder;
+	public override Transform GetSpawnTransform() => m_spawnTransform;
+	public override AiTargetingSystem GetTarget() => m_target;
 
 	protected override void Awake()
 	{
@@ -51,6 +55,7 @@ public class AIAgent : AIAgentBehavior
 		m_health = GetComponent<Health>();
 		m_flagHolder = GetComponent<FlagHolder>();
 		m_weaponIK = GetComponent<BotWeaponIK>();
+		m_target = GetComponent<AiTargetingSystem>();
 
 		m_health.OnDeath += DestroyEnemy;
 
@@ -58,11 +63,13 @@ public class AIAgent : AIAgentBehavior
 
 	protected override void Start()
 	{
-		//m_opposingTeamFlag = GameObject.FindGameObjectWithTag("RedTeam").transform;
+		m_spawnTransform = transform;
+
 		m_stateMachine = new BotStateMachine(this);
 		m_stateMachine.RegisterState(new AttackState());
 		m_stateMachine.RegisterState(new DeathState());
 		m_stateMachine.RegisterState(new CaptureFlagState());
+		m_stateMachine.RegisterState(new IdleState());
 		m_stateMachine.ChangeState(m_initialState);
 
 		StartCoroutine(LateStart());
@@ -122,6 +129,32 @@ public class AIAgent : AIAgentBehavior
 				if (m_navMeshAgent.pathStatus != NavMeshPathStatus.PathPartial)
 				{
 					m_navMeshAgent.destination = location.position;
+				}
+			}
+
+			m_timer = m_config.UpdateTimer;
+		}
+	}
+
+
+	public override void MoveTo(Vector3 position)
+	{
+		m_timer -= Time.deltaTime;
+		if (!m_navMeshAgent.hasPath)
+		{
+			m_navMeshAgent.destination = position;
+		}
+
+		if (m_timer < 0)
+		{
+			Vector3 dir = (position - m_navMeshAgent.destination);
+			dir.y = 0;
+
+			if (dir.sqrMagnitude > m_config.MinDistance * m_config.MinDistance)
+			{
+				if (m_navMeshAgent.pathStatus != NavMeshPathStatus.PathPartial)
+				{
+					m_navMeshAgent.destination = position;
 				}
 			}
 

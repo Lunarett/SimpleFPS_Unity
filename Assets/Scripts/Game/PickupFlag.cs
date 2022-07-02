@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public enum EFlagState
@@ -20,7 +21,7 @@ public class PickupFlag : MonoBehaviour
 
 	private Vector3 m_basePosition;
 	private Quaternion m_baseRotation;
-	
+
 	public EFlagState FlagState;
 
 	private void Awake()
@@ -61,13 +62,18 @@ public class PickupFlag : MonoBehaviour
 				}
 			}
 
-			if(m_flagHolder == null) { Debug.LogError("FlagHolder is returning NULL"); }
-			if(m_health == null) { Debug.LogError("Health is returning NULL"); }
+			if (m_flagHolder == null) { Debug.LogError("FlagHolder is returning NULL"); }
+			if (m_health == null) { Debug.LogError("Health is returning NULL"); }
 		}
 	}
 
 	public void Pickup(GameObject pawn)
 	{
+		if (FlagState == EFlagState.Dropped)
+		{
+			StopCoroutine(ReturnFlag());
+		}
+
 		FlagState = EFlagState.PickedUp;
 
 		m_poleCollider.enabled = false;
@@ -81,19 +87,37 @@ public class PickupFlag : MonoBehaviour
 	{
 		FlagHolder fh = pawn.GetComponent<FlagHolder>();
 
-		if(fh != null)
+		if (fh != null)
 		{
+			FlagState = EFlagState.Dropped;
+
 			m_poleCollider.enabled = true;
-			m_pickupZoneCollider.enabled = false;
+			m_pickupZoneCollider.enabled = true;
 			m_rigidbody.isKinematic = false;
 
-			fh.DropFlag(gameObject);
+			fh.DropFlag();
+		}
+		else
+		{
+			Debug.LogError("NULLLL");
+		}
+
+		StartCoroutine(ReturnFlag());
+	}
+
+	IEnumerator ReturnFlag()
+	{
+		yield return new WaitForSeconds(10);
+
+		if (FlagState == EFlagState.Dropped)
+		{
+			ReturnFlagToBase();
 		}
 	}
 
 	public void ReturnFlagToBase()
 	{
-		if(FlagState != EFlagState.Base)
+		if (FlagState != EFlagState.Base)
 		{
 			transform.position = m_basePosition;
 			transform.rotation = m_baseRotation;

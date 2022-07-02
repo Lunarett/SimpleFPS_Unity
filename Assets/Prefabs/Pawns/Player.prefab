@@ -5571,7 +5571,7 @@ MonoBehaviour:
   m_HUD: {fileID: 1973449467}
   m_maxHealth: 100
   m_team: 0
-  m_regenerate: 1
+  m_regenerate: 0
   m_regenerationSpeed: 5
 --- !u!114 &47716270809907496
 MonoBehaviour:

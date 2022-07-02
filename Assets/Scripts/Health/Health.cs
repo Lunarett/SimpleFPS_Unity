@@ -21,7 +21,7 @@ public class Health : MonoBehaviour, IDamageable
 	[SerializeField] private float m_regenerationSpeed = 5.0f;
 
 	private float m_currentHealth;
-	private bool m_dead = true;
+	private bool m_dead = false;
 
 	public event Action<GameObject, GameObject> OnDeath;
 	public event Action OnHealthChanged;
@@ -29,6 +29,7 @@ public class Health : MonoBehaviour, IDamageable
 	public float CurrentHealth { get => m_currentHealth; }
 	public float MaxHealth { get => m_maxHealth; }
 	public ETeams Team { get => m_team; }
+	public bool IsDead { get => m_dead; }
 
 	private void Start()
 	{
@@ -54,9 +55,9 @@ public class Health : MonoBehaviour, IDamageable
 
 		if (m_currentHealth <= 0)
 		{
-			if (m_dead)
+			if (!m_dead)
 			{
-				m_dead = false;
+				m_dead = true;
 				OnDeath?.Invoke(gameObject, instigator);
 			}
 		}
@@ -99,5 +100,10 @@ public class Health : MonoBehaviour, IDamageable
 			Debug.LogWarning("Instigators Health is returning null!");
 			return true;
 		}
+	}
+
+	public void SetTeam(ETeams team)
+	{
+		m_team = team;
 	}
 }

@@ -18,6 +18,7 @@ public abstract class AIAgentBehavior : MonoBehaviour
 	public abstract void SetTeamFlag(Transform target);
 	public abstract void SetEnemyTarget(Transform target);
 	public abstract void MoveTo(Transform location);
+	public abstract void MoveTo(Vector3 position);
 
 	// Getters
 	public abstract int GetCharacterID();
@@ -25,7 +26,7 @@ public abstract class AIAgentBehavior : MonoBehaviour
 	public abstract EnemyAgentConfig GetConfig();
 	public abstract WeaponBehavior GetWeapon();
 	public abstract NavMeshAgent GetNavMeshAgent();
-	public abstract Health Gethealth();
+	public abstract Health GetHealth();
 	public abstract Transform GetOpposingTeamFlag();
 	public abstract Transform GetTeamFlag();
 	public abstract Transform GetEnemyTarget();
@@ -34,4 +35,6 @@ public abstract class AIAgentBehavior : MonoBehaviour
 	public abstract BotWeaponIK GetWeaponIK();
 	public abstract AISightSensor GetAISightSensor();
 	public abstract FlagHolder GetFlagHolder();
+	public abstract Transform GetSpawnTransform();
+	public abstract AiTargetingSystem GetTarget();
 }

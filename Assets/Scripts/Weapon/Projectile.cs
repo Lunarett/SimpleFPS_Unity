@@ -7,6 +7,7 @@ public class Projectile : ProjectileBehavior
 {
 	[SerializeField] private float m_duration = 1.0f;
 	[SerializeField] private float m_damage = 10;
+	[SerializeField] private LayerMask m_damageableMask;
 	[SerializeField] private ImpactEffects[] m_impactEffects;
 
 	private GameObject m_ownerObject;
@@ -22,26 +23,14 @@ public class Projectile : ProjectileBehavior
 
 	private void OnCollisionEnter(Collision other)
 	{
-		if (other.gameObject.CompareTag("BlueTeam"))
+		if (m_damageableMask.value == 1 << other.gameObject.layer)
 		{
-			HitBox hb = other.gameObject.GetComponent<HitBox>();
-			if (hb != null)
-			{
-				if (other.collider.CompareTag("Head"))
-					hb.OnBulletHit(100, m_ownerObject);
-				else
-					hb.OnBulletHit(m_damage, m_ownerObject);
+			Health h = other.gameObject.GetComponent<Health>();
 
+			if (h != null)
+			{
+				h.Damage(m_damage, OwnerObject);
 				Instantiate(m_impactEffects[1].Prefab, transform.position, transform.rotation);
-			}
-		}
-		else if (other.collider.CompareTag("RedTeam"))
-		{
-			Health health = other.gameObject.GetComponent<Health>();
-
-			if (health != null)
-			{
-				health.Damage(m_damage, m_ownerObject);
 			}
 		}
 		else
@@ -67,4 +56,31 @@ public class Projectile : ProjectileBehavior
 	{
 		m_damage *= multiplier;
 	}
+
+	// 	private void Dump()
+	// 	{
+	// 		if (m_damageableMask.value == 1 << other.gameObject.layer)
+	// 		{
+	// 			HitBox hb = other.gameObject.GetComponent<HitBox>();
+	// 			if (hb != null)
+	// 			{
+	// 				Debug.Log("Dunno what you talking about everything works here :/");
+	// 				if (other.collider.CompareTag("Head"))
+	// 					hb.OnBulletHit(100, m_ownerObject);
+	// 				else
+	// 					hb.OnBulletHit(m_damage, m_ownerObject);
+	// 
+	// 				Instantiate(m_impactEffects[1].Prefab, transform.position, transform.rotation);
+	// 			}
+	// 			else
+	// 			{
+	// 				Debug.LogWarning($"No Hitbox Found on Pawn!           Pawn Name: {other.gameObject.name}");
+	// 			}
+	// 		}
+	// 		else
+	// 		{
+	// 			Instantiate(m_impactEffects[0].Prefab, transform.position, transform.rotation);
+	// 		}
+	// 
+	// 	}
 }

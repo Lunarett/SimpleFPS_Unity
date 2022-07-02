@@ -5,7 +5,8 @@ using UnityEngine;
 public enum BotStateID
 {
 	Idle,
-	ChaseTarget,
+	CaptureFlag,
+	Attack,
 	Death
 }
 
